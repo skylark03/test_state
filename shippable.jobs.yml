@@ -6,5 +6,6 @@ jobs:
       - IN: test_state_repo
         switch: off
       - TASK:
+        - script: ls /build/IN/my_state/state/now.state && cat /build/IN/my_state/state/now.state
         - script: . /build/IN/test_state_repo/gitRepo/edit_state.sh
       - OUT: my_state
