@@ -6,3 +6,4 @@ resources:
     integration: github
     pointer:
       sourceName: skylark03/test_state
+      branch: master
