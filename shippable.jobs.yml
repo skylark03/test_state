@@ -1,0 +1,9 @@
+jobs:
+  - name: use_state
+    type: runSh
+    steps:
+      - IN: my_state
+      - IN: test_state_repo
+      - TASK:
+        - script: . /build/IN/test_state_rpo/gitRepo/edit_state.sh
+      - OUT: my_state
