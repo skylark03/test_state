@@ -6,4 +6,3 @@ resources:
     integration: github
     pointer:
       sourceName: skylark03/test_state
-      buildOnCommit: false
