@@ -10,6 +10,7 @@ jobs:
         - script: echo foo=BAR >> $JOB_STATE/test_env_ecs.env
         - script: cat $JOB_STATE/test_env_ecs.env
       - OUT: test_env_ecs
+        extend: false
       
   - name: clear_state
     type: runSh
