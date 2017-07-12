@@ -2,22 +2,20 @@ jobs:
   - name: create_state
     type: runSh
     steps:
-      - IN: my_state
       - IN: test_env_ecs
       - TASK:
         - script: echo versionName=$(date) > /build/OUT/test_env_ecs/state/test_env_ecs.env
         - script: echo action=CREATE >> /build/OUT/test_env_ecs/state/test_env_ecs.env
         - script: echo foo=BAR >> /build/OUT/test_env_ecs/state/test_env_ecs.env
         - script: cat /build/OUT/test_env_ecs/state/test_env_ecs.env
-      - OUT: my_state
+      - OUT: test_env_ecs
       
   - name: clear_state
     type: runSh
     steps:
-      - IN: my_state
       - IN: test_env_ecs
       - TASK:
         - script: echo versionName=$(date) > /build/OUT/test_env_ecs/state/test_env_ecs.env
         - script: echo action=CLEAR >> /build/OUT/test_env_ecs/state/test_env_ecs.env
         - script: cat /build/OUT/test_env_ecs/state/test_env_ecs.env
-      - OUT: my_state
+      - OUT: test_env_ecs
