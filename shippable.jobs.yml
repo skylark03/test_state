@@ -3,21 +3,21 @@ jobs:
     type: runSh
     steps:
       - IN: my_state
+      - IN: test_env_ecs
       - TASK:
-        - script: "ls -latr /build/IN/my_state/state/"
-        - script: echo versionName=$(date) > /build/OUT/my_state/state/my_state.env
-        - script: echo action=CREATE >> /build/OUT/my_state/state/my_state.env
-        - script: echo foo=BAR >> /build/OUT/my_state/state/my_state.env
-        - script: cat /build/OUT/my_state/state/my_state.env
+        - script: echo versionName=$(date) > /build/OUT/test_env_ecs/state/test_env_ecs.env
+        - script: echo action=CREATE >> /build/OUT/test_env_ecs/state/test_env_ecs.env
+        - script: echo foo=BAR >> /build/OUT/test_env_ecs/state/test_env_ecs.env
+        - script: cat /build/OUT/test_env_ecs/state/test_env_ecs.env
       - OUT: my_state
       
   - name: clear_state
     type: runSh
     steps:
       - IN: my_state
+      - IN: test_env_ecs
       - TASK:
-        - script: "ls -latr /build/IN/my_state/state/"
-        - script: echo versionName=$(date) > /build/OUT/my_state/state/my_state.env
-        - script: echo action=CLEAR >> /build/OUT/my_state/state/my_state.env
-        - script: cat /build/OUT/my_state/state/my_state.env
+        - script: echo versionName=$(date) > /build/OUT/test_env_ecs/state/test_env_ecs.env
+        - script: echo action=CLEAR >> /build/OUT/test_env_ecs/state/test_env_ecs.env
+        - script: cat /build/OUT/test_env_ecs/state/test_env_ecs.env
       - OUT: my_state
