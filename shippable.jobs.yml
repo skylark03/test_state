@@ -8,6 +8,7 @@ jobs:
         - script: echo versionName=$(date) > /build/OUT/my_state/state/my_state.env
         - script: echo action=CREATE > /build/OUT/my_state/state/my_state.env
         - script: echo foo=BAR > /build/OUT/my_state/state/my_state.env
+        - script: cat /build/OUT/my_state/state/my_state.env
       - OUT: my_state
       
   - name: clear_state
