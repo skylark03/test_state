@@ -1,13 +1,21 @@
 jobs:
-  - name: use_state
+  - name: create_state
     type: runSh
     steps:
       - IN: my_state
-      - IN: test_state_repo
-        switch: off
       - TASK:
         - script: "ls -latr /build/IN/my_state/state/"
-        - script: "if [ -f /build/IN/my_state/state/now2.state ]; then echo IN state: $(cat /build/IN/my_state/state/now2.state); fi"
-        - script: echo NOW=$(date) > /build/OUT/my_state/state/now2.state
-        - script: "echo OUT state: $(cat /build/OUT/my_state/state/now2.state)"
+        - script: echo versionName=$(date) > /build/OUT/my_state/state/my_state.env
+        - script: echo action=CREATE > /build/OUT/my_state/state/my_state.env
+        - script: echo foo=BAR > /build/OUT/my_state/state/my_state.env
+      - OUT: my_state
+      
+  - name: clear_state
+    type: runSh
+    steps:
+      - IN: my_state
+      - TASK:
+        - script: "ls -latr /build/IN/my_state/state/"
+        - script: echo versionName=$(date) > /build/OUT/my_state/state/my_state.env
+        - script: echo action=CLEAR > /build/OUT/my_state/state/my_state.env  
       - OUT: my_state
