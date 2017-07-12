@@ -2,9 +2,12 @@ jobs:
   - name: create_state
     type: runSh
     steps:
+      - IN: test_state_repo
+        switch: off
       - TASK:
         - script: ls -ltra /build/OUT/test_env_ecs
         - script: cat /build/OUT/test_env_ecs/version.json
+        - script: cat /build/IN/test_state_repo/version.json
         - script: echo versionName=$(date) > $JOB_STATE/test_env_ecs.env
         - script: echo action=CREATE >> $JOB_STATE/test_env_ecs.env
         - script: echo foo=BAR >> $JOB_STATE/test_env_ecs.env
