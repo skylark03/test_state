@@ -3,17 +3,17 @@ jobs:
     type: runSh
     steps:
       - TASK:
-        - script: echo versionName=$(date) > /build/OUT/test_env_ecs/state/test_env_ecs.env
-        - script: echo action=CREATE >> /build/OUT/test_env_ecs/state/test_env_ecs.env
-        - script: echo foo=BAR >> /build/OUT/test_env_ecs/state/test_env_ecs.env
-        - script: cat /build/OUT/test_env_ecs/state/test_env_ecs.env
+        - script: echo versionName=$(date) > $JOB_STATE/test_env_ecs.env
+        - script: echo action=CREATE >> $JOB_STATE/test_env_ecs.env
+        - script: echo foo=BAR >> $JOB_STATE/test_env_ecs.env
+        - script: cat $JOB_STATE/test_env_ecs.env
       - OUT: test_env_ecs
       
   - name: clear_state
     type: runSh
     steps:
       - TASK:
-        - script: echo versionName=$(date) > /build/OUT/test_env_ecs/state/test_env_ecs.env
-        - script: echo action=CLEAR >> /build/OUT/test_env_ecs/state/test_env_ecs.env
-        - script: cat /build/OUT/test_env_ecs/state/test_env_ecs.env
+        - script: echo versionName=$(date) > $JOB_STATE/test_env_ecs.env
+        - script: echo action=CLEAR >> $JOB_STATE/test_env_ecs.env
+        - script: cat $JOB_STATE/test_env_ecs.env
       - OUT: test_env_ecs
