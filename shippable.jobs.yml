@@ -3,6 +3,7 @@ jobs:
     type: runSh
     steps:
       - TASK:
+        - script: cat /build/OUT/test_env_ecs/version.json
         - script: echo versionName=$(date) > $JOB_STATE/test_env_ecs.env
         - script: echo action=CREATE >> $JOB_STATE/test_env_ecs.env
         - script: echo foo=BAR >> $JOB_STATE/test_env_ecs.env
